@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace NEOS.Extensions
 {
-    internal static class StringExtensions
+    public static class StringExtensions
     {
         private const int HEX = 16;
 

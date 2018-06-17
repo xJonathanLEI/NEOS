@@ -2,7 +2,7 @@ using System.Text;
 
 namespace NEOS.Extensions
 {
-    internal static class BytesExtensions
+    public static class BytesExtensions
     {
         public static string ToHex(this byte[] input, bool prefix = true)
         {
