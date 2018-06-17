@@ -8,9 +8,7 @@ namespace NEOS.Encoding
 {
     public class Base58Check
     {
-        private static string SYMBOL_CHART = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
         private const int CHECK_CODE_LENGTH = 4;
-        private const int SYMBOL_COUNT = 58;
         private const int DEFAULT_VERSION_LENGTH = 1;
 
         public static string Encode(string version, string payload)
