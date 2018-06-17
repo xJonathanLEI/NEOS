@@ -17,5 +17,12 @@ namespace NEOS.Tests.Encoding
             foreach (var testPair in testData)
                 Assert.Equal(testPair.result, Base58Check.Encode(testPair.data.Version, testPair.data.Payload));
         }
+
+        [Fact]
+        public void Base58CheckDecodeTest()
+        {
+            foreach (var testPair in testData)
+                Assert.Equal(testPair.data, Base58Check.Decode(testPair.result, testPair.data.Version.Length));
+        }
     }
 }
