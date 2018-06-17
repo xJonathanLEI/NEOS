@@ -2,6 +2,7 @@ using System;
 using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Asn1.X9;
 using Org.BouncyCastle.Crypto.EC;
+using NEOS.EOS;
 
 namespace NEOS.Key
 {
@@ -35,6 +36,13 @@ namespace NEOS.Key
         public byte[] GetEncoded()
         {
             return data;
+        }
+
+        public EOSAddress GetEOSAddress()
+        {
+            if (IsCompressed)
+                return new EOSAddress(data);
+            return new EOSAddress(Compress().data);
         }
 
         public PubKey Compress()
