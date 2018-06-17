@@ -44,5 +44,15 @@ namespace NEOS.EOS
             this.compressedKeyData = new byte[compressedKeyData.Length];
             Array.Copy(compressedKeyData, 0, this.compressedKeyData, 0, compressedKeyData.Length);
         }
+
+        public EOSAddress(string encodedAddress)
+        {
+            if (!encodedAddress.StartsWith(ADDRESS_PREFIX))
+                throw new ArgumentException($"Invalid address format. Must start with {ADDRESS_PREFIX}");
+            encodedAddress = encodedAddress.Remove(0, ADDRESS_PREFIX.Length);
+
+            this.compressedKeyData = new byte[KEY_LENGTH];
+            Array.Copy(Base58.Decode(encodedAddress), 0, compressedKeyData, 0, KEY_LENGTH);
+        }
     }
 }

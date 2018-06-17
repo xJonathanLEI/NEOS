@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Xunit;
+using NEOS.EOS;
 using NEOS.Key;
 using NEOS.Encoding;
 using NEOS.Extensions;
@@ -20,6 +21,13 @@ namespace NEOS.Tests.Encoding
         {
             foreach (var testPair in testData)
                 Assert.Equal(testPair.address, new PrivKey(Base58Check.Decode(testPair.privKey).Payload).GetPubKey().GetEOSAddress().AddressString);
+        }
+
+        [Fact]
+        public void FromStringTest()
+        {
+            foreach (var testPair in testData)
+                Assert.Equal(testPair.address, new EOSAddress(testPair.address).AddressString);
         }
     }
 }
