@@ -1,6 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageVersion>0.1.0.0</PackageVersion>
+    <PackageId>NEOS</PackageId>
+    <Title>NEOS</Title>
+    <Authors>Jonathan LEI</Authors>
+    <Description>An EOS library for .NET written in C#</Description>
+    <PackageProjectUrl>https://github.com/xJonathanLEI/NEOS</PackageProjectUrl>
+    <PackageTags>EOS;EOSIO</PackageTags>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
