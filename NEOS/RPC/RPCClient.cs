@@ -15,19 +15,24 @@ namespace NEOS.RPC
             this.HttpEndpoint = httpEndpoint;
         }
 
-        public async Task<GetInfoResponse> GetInfo()
+        public async Task<GetInfoResponse> GetInfoAsync()
         {
             return await SendRequest<GetInfoResponse>("/v1/chain/get_info", HttpMethod.Post);
         }
 
-        public async Task<GetBlockResponse> GetBlock(ulong blockNum)
+        public async Task<GetBlockResponse> GetBlockAsync(ulong blockNum)
         {
             return await SendRequest<GetBlockResponse>("/v1/chain/get_block", HttpMethod.Post, new { block_num_or_id = blockNum });
         }
 
-        public async Task<GetBlockResponse> GetBlock(string blockId)
+        public async Task<GetBlockResponse> GetBlockAsync(string blockId)
         {
             return await SendRequest<GetBlockResponse>("/v1/chain/get_block", HttpMethod.Post, new { block_num_or_id = blockId });
+        }
+
+        public async Task<GetAccountResponse> GetAccountAsync(string accountName)
+        {
+            return await SendRequest<GetAccountResponse>("/v1/chain/get_account", HttpMethod.Post, new { account_name = accountName });
         }
 
         private async Task<T> SendRequest<T>(string path, HttpMethod method, object body = null)
