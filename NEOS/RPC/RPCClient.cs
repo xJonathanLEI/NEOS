@@ -35,6 +35,16 @@ namespace NEOS.RPC
             return await SendRequest<GetAccountResponse>("/v1/chain/get_account", HttpMethod.Post, new { account_name = accountName });
         }
 
+        public async Task<GetActionsResponse> GetActionsAsync(int position, int offset, string accountName)
+        {
+            return await SendRequest<GetActionsResponse>("/v1/history/get_actions", HttpMethod.Post, new
+            {
+                pos = position,
+                offset = offset,
+                account_name = accountName
+            });
+        }
+
         private async Task<T> SendRequest<T>(string path, HttpMethod method, object body = null)
         {
             using (var hc = new HttpClient())
@@ -48,7 +58,7 @@ namespace NEOS.RPC
                 string content = await response.Content.ReadAsStringAsync();
                 var resultObj = JsonConvert.DeserializeObject<T>(content);
 
-                System.Console.WriteLine(content);
+                System.IO.File.WriteAllText(@"C:\Users\xJona\Desktop\GetActions.txt", content);
 
                 return resultObj;
             }
